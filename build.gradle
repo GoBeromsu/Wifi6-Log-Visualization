@@ -26,6 +26,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation group: 'org.influxdb', name: 'influxdb-java', version: "2.23"
+
 }
 
 tasks.named('bootBuildImage') {
