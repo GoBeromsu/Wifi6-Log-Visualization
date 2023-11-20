@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jnu.wifi6.config.MerakiConfig;
+import com.jnu.wifi6.meraki.DTO.GetNetworkUsage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,19 +25,18 @@ public class GetNetworkUsageUsecase {
 
   private static final String API_KEY = "X-Cisco-Meraki-API-Key";
 
-  public List<Map<String, Object>> execute() throws JsonProcessingException {
+  public GetNetworkUsage execute() throws JsonProcessingException {
     String baseUrl = merakiConfig.getBaseUrl();
-    HttpHeaders headers = new HttpHeaders();
-
-    headers.set(API_KEY, merakiConfig.getApiKey());
-    headers.setContentType(MediaType.APPLICATION_JSON);
     String startDate = "2023-10-25T00:00:00Z";
+
+    HttpHeaders headers = getHeaders();
 
     RestTemplate restTemplate = new RestTemplate();
     List<Map<String, Object>> allData = new ArrayList<>();
 
     String url = String.format("%s/networks/%s/clients?perPage=1000&t0=%s", baseUrl,
         merakiConfig.getNetworkId(), startDate);
+
     while (url != null && !url.isEmpty()) {
       HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
       ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity,
@@ -57,7 +57,15 @@ public class GetNetworkUsageUsecase {
       url = extractNextLink(response.getHeaders().get("Link"));
     }
 
-    return allData;
+    return new GetNetworkUsage(allData.size());
+  }
+
+  private HttpHeaders getHeaders() {
+    HttpHeaders headers = new HttpHeaders();
+
+    headers.set(API_KEY, merakiConfig.getApiKey());
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    return headers;
   }
 
   private static String extractNextLink(List<String> linkHeader) {
