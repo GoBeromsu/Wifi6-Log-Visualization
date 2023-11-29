@@ -1,10 +1,9 @@
-package com.jnu.wifi6.meraki.usecase;
+package com.jnu.wifi6.meraki.command;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jnu.wifi6.config.MerakiConfig;
-import com.jnu.wifi6.meraki.DTO.GetNetworkUsage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
-public class GetNetworkUsageUsecase {
+public class GetNetworkUsage {
 
   private final MerakiConfig merakiConfig;
 
@@ -27,7 +26,7 @@ public class GetNetworkUsageUsecase {
 
   public GetNetworkUsage execute() throws JsonProcessingException {
     String baseUrl = merakiConfig.getBaseUrl();
-    String startDate = "2023-10-25T00:00:00Z";
+    String startDate = "2023-10-30T00:00:00Z";
 
     HttpHeaders headers = getHeaders();
 
