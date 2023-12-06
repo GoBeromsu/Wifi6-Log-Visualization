@@ -24,7 +24,8 @@ public class GetNetworkUsage {
 
   private static final String API_KEY = "X-Cisco-Meraki-API-Key";
 
-  public GetNetworkUsage execute() throws JsonProcessingException {
+
+  public void execute() throws JsonProcessingException {
     String baseUrl = merakiConfig.getBaseUrl();
     String startDate = "2023-10-30T00:00:00Z";
 
@@ -55,8 +56,6 @@ public class GetNetworkUsage {
 
       url = extractNextLink(response.getHeaders().get("Link"));
     }
-
-    return new GetNetworkUsage(allData.size());
   }
 
   private HttpHeaders getHeaders() {
