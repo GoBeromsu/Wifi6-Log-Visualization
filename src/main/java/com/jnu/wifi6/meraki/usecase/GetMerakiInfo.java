@@ -4,7 +4,6 @@ import com.jnu.wifi6.meraki.DTO.GetMerakiDTO;
 import com.jnu.wifi6.meraki.command.GetMerakiClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
@@ -12,7 +11,7 @@ public class GetMerakiInfo {
 
   private final GetMerakiClient getMerakiClient;
 
-  public Mono<GetMerakiDTO> execute() {
+  public GetMerakiDTO execute() {
 
     Long totalCleints = 0L;
     Long totalUsage = 0L;
