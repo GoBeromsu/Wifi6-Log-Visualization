@@ -1,4 +1,4 @@
-package com.jnu.wifi6.meraki.DTO;
+package com.jnu.wifi6.meraki.dto;
 
 public record GetMerakiDTO(Long totalCleints, Long totalUsage) {
 

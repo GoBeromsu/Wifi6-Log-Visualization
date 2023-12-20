@@ -1,8 +1,8 @@
 package com.jnu.wifi6.meraki;
 
-import com.jnu.wifi6.meraki.DTO.ClientDeviceDTO;
-import com.jnu.wifi6.meraki.DTO.GetMerakiDTO;
-import com.jnu.wifi6.meraki.DTO.GetUsageDTO;
+import com.jnu.wifi6.meraki.dto.ClientDeviceDTO;
+import com.jnu.wifi6.meraki.dto.GetMerakiDTO;
+import com.jnu.wifi6.meraki.dto.GetUsageDTO;
 import java.util.List;
 
 public class Mapper {
