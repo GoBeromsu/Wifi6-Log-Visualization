@@ -13,9 +13,6 @@ public class GetMerakiInfo {
 
   public GetMerakiDTO execute() {
 
-    Long totalCleints = 0L;
-    Long totalUsage = 0L;
-
     return getMerakiClient.execute(getDate("2023-12-13"), 1000000000, 300);
   }
 
