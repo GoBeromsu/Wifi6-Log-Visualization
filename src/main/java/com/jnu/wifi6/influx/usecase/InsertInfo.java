@@ -4,6 +4,7 @@ import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.WriteApi;
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
+import com.jnu.wifi6.influx.dto.PostInfluxDTO;
 import java.time.Instant;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class InsertInfo {
     this.org = org;
   }
 
-  public void execute(final Long predictedValue) {
+  public PostInfluxDTO execute(final Long predictedValue) {
     try (WriteApi writeApi = influxDBClient.getWriteApi()) {
       Point point = Point.measurement("usage_prediction")
           .addTag("source", "model_v1")
@@ -31,5 +32,6 @@ public class InsertInfo {
           .time(Instant.now(), WritePrecision.NS);
       writeApi.writePoint(bucket, org, point);
     }
+    return new PostInfluxDTO(predictedValue);
   }
 }
