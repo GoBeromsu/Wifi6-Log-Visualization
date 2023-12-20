@@ -21,8 +21,10 @@ public class ScheduledGetMerakiInfo {
     String currentDate = getCurrentDateTime();
     GetMerakiDTO merakiData = getMerakiClient.execute(currentDate, 1000000000, 300);
 
+    String url = "https://external.api/endpoint";//todo 도커 컨테이너에 올라가는 외부 api 주소로 변경 할 것
 
     // POST 요청 보내기
+    restClient.sendPostRequest(url, merakiData, Void.class); // Void.class는 응답 타입을 나타냅니다.
 
   }
 
