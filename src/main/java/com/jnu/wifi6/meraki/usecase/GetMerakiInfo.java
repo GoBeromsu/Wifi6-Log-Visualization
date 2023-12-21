@@ -3,6 +3,7 @@ package com.jnu.wifi6.meraki.usecase;
 import com.jnu.wifi6.meraki.DTO.GetMerakiDTO;
 import com.jnu.wifi6.meraki.command.GetMerakiClient;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,6 +11,10 @@ import org.springframework.stereotype.Service;
 public class GetMerakiInfo {
 
   private final GetMerakiClient getMerakiClient;
+  private final RestClient restClient;
+
+  @Value("${flask.server.url}")
+  private String flaskServerUrl;
 
   public GetMerakiDTO execute() {
 
