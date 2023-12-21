@@ -1,9 +1,9 @@
 package com.jnu.wifi6.meraki.command;
 
 import com.jnu.wifi6.config.MerakiConfig;
+import com.jnu.wifi6.meraki.Mapper;
 import com.jnu.wifi6.meraki.dto.ClientDeviceDTO;
 import com.jnu.wifi6.meraki.dto.GetMerakiDTO;
-import com.jnu.wifi6.meraki.Mapper;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
