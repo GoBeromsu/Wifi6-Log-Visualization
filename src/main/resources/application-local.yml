@@ -1,0 +1,16 @@
+influxdb:
+  url: "http://example.com:8086" # InfluxDB 서버 URL
+  username: "dummyuser" # 사용자 이름
+  password: "dummypassword" # 비밀번호
+  bucket: "dummybucket" # 데이터베이스 이름
+  token: "dummytoken"
+  org: "dummyorg"
+
+meraki:
+  organizationId: "dummyorganizationId" # 메라키 조직 ID
+  apiKey: "dummyapiKey" # 메라키 API 키
+  networkId: "dummyNetworkId" # 메라키 네트워크 ID
+
+flask:
+  server:
+    url: "http://localhost:5051" # Flask 서버 URL
