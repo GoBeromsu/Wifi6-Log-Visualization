@@ -15,6 +15,6 @@ public class InfluxController {
 
   @PostMapping("/influx")
   public PostInfluxDTO insertInfo(@RequestBody PostInfluxDTO postInfluxDTO) {
-    return insertInfo.execute(postInfluxDTO.predictedValue());
+    return insertInfo.execute(postInfluxDTO);
   }
 }

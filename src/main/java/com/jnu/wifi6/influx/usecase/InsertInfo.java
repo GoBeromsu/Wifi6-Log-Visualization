@@ -24,7 +24,8 @@ public class InsertInfo {
     this.org = org;
   }
 
-  public PostInfluxDTO execute(final Long predictedValue) {
+  public PostInfluxDTO execute(final PostInfluxDTO postInfluxDTO) {
+    Long predictedValue = postInfluxDTO.predictedValue();
     try (WriteApi writeApi = influxDBClient.getWriteApi()) {
       Point point = Point.measurement("usage_prediction")
           .addTag("source", "model_v1")
