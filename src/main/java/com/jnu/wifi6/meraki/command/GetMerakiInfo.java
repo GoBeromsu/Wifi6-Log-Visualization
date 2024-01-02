@@ -14,17 +14,14 @@ import org.springframework.stereotype.Service;
 public class GetMerakiInfo {
 
   private final GetMerakiClient getMerakiClient;
-  private final RestClient restClient;
 
-  @Value("${flask.server.url}")
-  private String flaskServerUrl;
+
 
   public GetMerakiDTO execute() {
     String currentDate = getCurrentDateTime();
     GetMerakiDTO merakiData = getMerakiClient.execute(currentDate, 5000);
 
-    // POST 요청 보내기
-    restClient.sendPostRequest(flaskServerUrl, merakiData, Void.class);
+
     return merakiData;
 
   }
