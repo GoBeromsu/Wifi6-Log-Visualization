@@ -21,7 +21,7 @@ public class GetMerakiInfo {
 
   public GetMerakiDTO execute() {
     String currentDate = getCurrentDateTime();
-    GetMerakiDTO merakiData = getMerakiClient.execute(currentDate, 1000000000, 3000);
+    GetMerakiDTO merakiData = getMerakiClient.execute(currentDate, 5000);
 
     // POST 요청 보내기
     restClient.sendPostRequest(flaskServerUrl, merakiData, Void.class);
